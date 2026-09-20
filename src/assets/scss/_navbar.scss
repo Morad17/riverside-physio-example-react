@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+.navbar {
+  background: $color-primary;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $spacing;
+  }
+
+  &__brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing * 1.5;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    color: rgba(#fff, 0.85);
+    text-decoration: none;
+
+    &:hover,
+    &.active {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}

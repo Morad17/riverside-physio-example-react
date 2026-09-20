@@ -1,0 +1,10 @@
+function Contact() {
+  return (
+    <section>
+      <h1>Contact</h1>
+      <p>Contact page content goes here.</p>
+    </section>
+  )
+}
+
+export default Contact
