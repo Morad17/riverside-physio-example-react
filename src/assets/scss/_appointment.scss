@@ -1,0 +1,57 @@
+@use 'variables' as *;
+
+$point: 56px;
+
+.appointment {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: $spacing * 4 $spacing;
+  background: $color-cream;
+
+  &__shape {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: $spacing * 3 calc(#{$point} + #{$spacing * 2});
+    background: $color-section;
+    text-align: center;
+    // pointed left and right ends
+    clip-path: polygon(
+      0 50%,
+      $point 0,
+      calc(100% - #{$point}) 0,
+      100% 50%,
+      calc(100% - #{$point}) 100%,
+      $point 100%
+    );
+  }
+
+  &__title {
+    margin: 0 0 $spacing;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: $color-primary-dark;
+  }
+
+  &__text {
+    margin: 0 auto;
+    max-width: 62ch;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    $point-sm: 28px;
+
+    &__shape {
+      padding: $spacing * 2.5 calc(#{$point-sm} + #{$spacing});
+      clip-path: polygon(
+        0 50%,
+        $point-sm 0,
+        calc(100% - #{$point-sm}) 0,
+        100% 50%,
+        calc(100% - #{$point-sm}) 100%,
+        $point-sm 100%
+      );
+    }
+  }
+}

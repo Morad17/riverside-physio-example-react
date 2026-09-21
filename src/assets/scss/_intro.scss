@@ -1,0 +1,155 @@
+@use 'variables' as *;
+
+.intro {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: $spacing * 4 $spacing;
+  background: $color-section;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: $spacing * 3;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__services {
+    width: 100%;
+    max-width: 460px;
+    justify-self: end;
+  }
+
+  &__info p {
+    margin: 0;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    line-height: 1.35;
+    color: $color-primary-dark;
+  }
+
+  &__title {
+    margin: 0 0 $spacing;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    color: $color-primary-dark;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: $spacing * 2;
+    }
+
+    &__info {
+      text-align: center;
+    }
+
+    &__services {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.sgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  aspect-ratio: 1;
+  container-type: inline-size;
+  overflow: hidden;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  background: $color-border; // shows through the gap as divider lines
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    padding: $spacing;
+    overflow: hidden;
+    text-align: center;
+    background: #fafafa;
+    outline: none;
+    transition: background 0.3s ease;
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      background: #fff;
+    }
+  }
+
+  // Fixed content width (relative to the whole grid, not the tile) so text
+  // never re-wraps while the tracks animate; shrinking is done with transform.
+  &__cell > * {
+    flex-shrink: 0;
+    width: 40cqw;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-text;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  // hovered / focused tile grows and takes over the others' space
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    transition: grid-template-columns 0.5s ease, grid-template-rows 0.5s ease;
+
+    &:has(&__cell:nth-child(1):is(:hover, :focus-visible)) {
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: 3fr 1fr;
+    }
+
+    &:has(&__cell:nth-child(2):is(:hover, :focus-visible)) {
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 3fr 1fr;
+    }
+
+    &:has(&__cell:nth-child(3):is(:hover, :focus-visible)) {
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: 1fr 3fr;
+    }
+
+    &:has(&__cell:nth-child(4):is(:hover, :focus-visible)) {
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 1fr 3fr;
+    }
+
+    &__cell:is(:hover, :focus-visible) {
+      background: $color-section;
+    }
+
+    // shrink and fade the squeezed tiles' content while another is expanded
+    &:has(&__cell:is(:hover, :focus-visible)) &__cell:not(:hover, :focus-visible) > * {
+      transform: scale(0.6);
+      opacity: 0.35;
+    }
+  }
+}
