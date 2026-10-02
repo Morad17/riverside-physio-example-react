@@ -86,7 +86,7 @@ function Home() {
 
         <div className="hero__marquee" aria-label="Accreditations">
           <ul className="hero__marquee-track">
-            {[...accredits, ...accredits].map((a, i) => (
+            {[...accredits, ...accredits, ...accredits, ...accredits].map((a, i) => (
               <li
                 className="hero__accredit"
                 key={i}
