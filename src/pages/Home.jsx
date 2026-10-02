@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import ServiceGrid from "../components/ServiceGrid";
 import TestimonialSlider from "../components/TestimonialSlider";
 import calendar from "../assets/img/calendar-icon.svg";
+import physioImg1 from "../assets/img/physio-image-1.jpg";
 
 function Home() {
   const icon = (
@@ -86,16 +87,18 @@ function Home() {
 
         <div className="hero__marquee" aria-label="Accreditations">
           <ul className="hero__marquee-track">
-            {[...accredits, ...accredits, ...accredits, ...accredits].map((a, i) => (
-              <li
-                className="hero__accredit"
-                key={i}
-                aria-hidden={i >= accredits.length}
-              >
-                {a.icon}
-                {a.text}
-              </li>
-            ))}
+            {[...accredits, ...accredits, ...accredits, ...accredits].map(
+              (a, i) => (
+                <li
+                  className="hero__accredit"
+                  key={i}
+                  aria-hidden={i >= accredits.length}
+                >
+                  {a.icon}
+                  {a.text}
+                </li>
+              ),
+            )}
           </ul>
         </div>
       </section>
@@ -112,14 +115,16 @@ function Home() {
       </section>
 
       <section className="appointment">
+        <div className="appointment__image-container">
+          <img src={physioImg1} alt="" />
+        </div>
         <div className="appointment__shape">
-          <h2 className="appointment__title">Your first appointment</h2>
+          <h2 className="appointment__title">Physios who actually listen</h2>
           <p className="appointment__text">
-            Not sure what happens when you book? Your first visit is a full
-            assessment — we listen to what's going on, examine the problem, and
-            explain what we think is causing it in plain English. You'll leave
-            with a clear plan and usually your first treatment done the same
-            day. Around 45 minutes..
+            Riverside was founded by Emma Hart and James Okafor, two chartered
+            physiotherapists who were tired of rushed, ten-minute appointments.
+            Here you get proper time, a real explanation, and a plan that fits
+            your life — not a conveyor belt.
           </p>
         </div>
       </section>
@@ -127,6 +132,47 @@ function Home() {
       <section className="testimonials">
         <h2 className="testimonials__title">What our patients say</h2>
         <TestimonialSlider />
+      </section>
+
+      <section className="process">
+        <h2 className="process__title">Your first appointment</h2>
+        <div className="process__cards">
+          {[
+            {
+              num: "01",
+              title: "We listen",
+              text: "Not sure what happens when you book? Your first visit is a full assessment — we listen to what's going on, examine the problem, and explain what we think is causing it in plain English.",
+            },
+            {
+              num: "02",
+              title: "Your clear plan",
+              text: "You'll leave with a clear plan and usually your first treatment done the same day.",
+            },
+            {
+              num: "03",
+              title: "Around 45 minutes",
+              text: "Your first appointment takes around 45 minutes, giving us time to understand the problem properly and start helping straight away.",
+            },
+          ].map((step, i) => (
+            <div
+              className={`process__col${i === 1 ? " process__col--featured" : ""}`}
+              key={step.num}
+            >
+              <article
+                className={`process__card${i === 1 ? " process__card--featured" : ""}`}
+              >
+                <span className="process__num">{step.num}</span>
+                <h3 className="process__card-title">{step.title}</h3>
+                <p className="process__card-text">{step.text}</p>
+              </article>
+              {i === 1 && (
+                <Link to="/contact" className="process__btn">
+                  Book now
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

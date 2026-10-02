@@ -1,0 +1,129 @@
+@use "variables" as *;
+
+.process {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: $spacing * 4 $spacing;
+  background: #fff;
+  text-align: center;
+
+  &__badge {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    border: 1px solid $color-border;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: $spacing 0 $spacing * 3;
+    font-family: $font-heading;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: $color-text;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing * 2;
+    align-items: start;
+    max-width: $max-width;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  &__col {
+    // side columns sit lower than the middle one
+    margin-top: $spacing * 5;
+
+    &--featured {
+      margin-top: 0;
+    }
+  }
+
+  &__btn {
+    display: block;
+    margin-top: $spacing;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    background: $color-accent;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $color-accent-dark;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 310px;
+    padding: $spacing * 1.5;
+    border-radius: 12px;
+    background: #e4f9e4;
+    color: $color-text;
+
+    &--featured {
+      background: $color-dark-green;
+      color: #fff;
+
+      .process__num {
+        background: #e4f9e4;
+        color: $color-dark-green;
+      }
+    }
+  }
+
+  &__num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: $spacing * 3;
+    border-radius: 50%;
+    background: $color-dark-green;
+    color: #fff;
+    font-style: italic;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  &__card-title {
+    margin: 0 0 0.5rem;
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+
+  &__card-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__cards {
+      grid-template-columns: 1fr;
+    }
+
+    &__col,
+    &__col--featured {
+      margin-top: 0;
+    }
+
+    &__card {
+      min-height: 0;
+    }
+  }
+}
