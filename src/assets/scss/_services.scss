@@ -18,7 +18,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/physio-image-4.jpg") cover no-repeat;
+    background: url("../img/physio-image-6.png") center / cover no-repeat;
     opacity: 0.85;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
@@ -42,7 +42,7 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 9rem $spacing * 2 $spacing * 3;
+  padding: 1rem;
   position: relative;
   z-index: 1;
 
@@ -80,12 +80,18 @@
     background: $color-section;
     color: $color-text;
     overflow: hidden;
+    text-align: center;
   }
-
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
   &__img {
     display: block;
     width: 100%;
-    max-width: 320px;
+    max-width: 160px;
     height: 260px;
     margin: auto auto 0;
     padding-top: $spacing * 1.5;
@@ -122,6 +128,45 @@
     margin: 0 0 $spacing;
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  &__extra {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 0.4s ease,
+      opacity 0.4s ease;
+
+    &.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+  }
+
+  &__extra-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  &__more {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0 0 $spacing;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-dark-green;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__list {

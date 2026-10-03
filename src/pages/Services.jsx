@@ -1,5 +1,44 @@
+import { useState } from "react";
 import physioImg4 from "../assets/img/physio-image-4.png";
 import physioImg5 from "../assets/img/physio-image-5.png";
+
+function ServiceCard({ card, icon }) {
+  const [open, setOpen] = useState(false);
+  const [first, ...rest] = card.text.split(/(?<=[.!?])\s+/);
+  const more = rest.join(" ");
+
+  return (
+    <article className="services-grid__card">
+      <div className="services-grid__title-group">
+        <span className="services-grid__icon">{icon}</span>
+        <h2 className="services-grid__title">{card.title}</h2>
+      </div>
+
+      <p className="services-grid__text">{first}</p>
+      <div
+        className={`services-grid__extra${open ? " is-open" : ""}`}
+        aria-hidden={!open}
+      >
+        <div className="services-grid__extra-inner">
+          {more && <p className="services-grid__text">{more}</p>}
+          <p className="services-grid__list">
+            <em>{card.label}</em> {card.list}
+          </p>
+        </div>
+      </div>
+      <button
+        type="button"
+        className="services-grid__more"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        {open ? "Read less" : "Read more"}
+        <span aria-hidden="true">{open ? "↑" : "↗"}</span>
+      </button>
+      <img className="services-grid__img" src={card.image} alt="" />
+    </article>
+  );
+}
 
 function Services() {
   const icon = (
@@ -65,15 +104,7 @@ function Services() {
       <section className="services-grid">
         <div className="services-grid__inner">
           {cards.map((c) => (
-            <article className="services-grid__card" key={c.title}>
-              <span className="services-grid__icon">{icon}</span>
-              <h2 className="services-grid__title">{c.title}</h2>
-              <p className="services-grid__text">{c.text}</p>
-              <p className="services-grid__list">
-                <em>{c.label}</em> {c.list}
-              </p>
-              <img className="services-grid__img" src={c.image} alt="" />
-            </article>
+            <ServiceCard key={c.title} card={c} icon={icon} />
           ))}
         </div>
       </section>
