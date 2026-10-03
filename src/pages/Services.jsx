@@ -1,5 +1,5 @@
-import physioImg2 from "../assets/img/physio-image-2.jpg";
-import physioImg3 from "../assets/img/physio-image-3.jpg";
+import physioImg4 from "../assets/img/physio-image-4.png";
+import physioImg5 from "../assets/img/physio-image-5.png";
 
 function Services() {
   const icon = (
@@ -28,26 +28,28 @@ function Services() {
   const cards = [
     {
       title: "Sports injuries",
+      image: physioImg4,
       text: "From weekend runners to Sunday-league footballers, we treat the full range of sports injuries — sprains, strains, tendon problems, and overuse injuries that build up over time. We don't just settle the pain; we work out why it happened and rehab it so you're not back in six weeks with the same thing. You'll get a return-to-sport plan you can actually follow.",
       label: "Common issues:",
       list: "runner's knee, tennis elbow, hamstring strains, Achilles pain, ankle sprains.",
     },
-    { image: physioImg2 },
     {
       title: "Back & neck pain",
+      image: physioImg5,
       text: "Back and neck pain is the most common reason people come to see us — and one of the most treatable. Whether you've woken up unable to move or you've been putting up with it for years, we use hands-on treatment alongside targeted exercises to get you moving again. No jargon, no endless appointments — a clear plan and honest timelines.",
       label: "Common issues:",
       list: 'lower back pain, sciatica, neck stiffness, "tech neck", postural pain.',
     },
     {
       title: "Post-surgery rehabilitation",
+      image: physioImg4,
       text: "Recovering from surgery can feel daunting, especially when you're not sure what's safe to do. We work alongside your surgeon's guidance to rebuild strength, movement, and confidence at the right pace — never rushing, never holding you back unnecessarily. Most people are surprised how much structured rehab speeds things up.",
       label: "We support recovery after:",
       list: "knee and hip replacements, ACL reconstruction, shoulder surgery, fractures.",
     },
-    { image: physioImg3 },
     {
       title: "Persistent pain",
+      image: physioImg5,
       text: "Long-standing pain is different, and it needs a different approach. We take the time to understand how pain affects your daily life, then build a paced, realistic plan to help you do more of what matters with less flare-up. This isn't about \"pushing through\" — it's about getting control back.",
       label: "We help with:",
       list: "persistent back pain, arthritis-related pain, fibromyalgia, recurring injuries.",
@@ -55,35 +57,27 @@ function Services() {
   ];
 
   return (
-    <>
+    <div className="services-page">
       <section className="services-hero">
         <h1>Care built around your body, your goals and your pace.</h1>
       </section>
 
       <section className="services-grid">
         <div className="services-grid__inner">
-          {cards.map((c, i) =>
-            c.image ? (
-              <div
-                className="services-grid__card services-grid__card--image"
-                key={i}
-              >
-                <img src={c.image} alt="" />
-              </div>
-            ) : (
-              <article className="services-grid__card" key={i}>
-                <span className="services-grid__icon">{icon}</span>
-                <h2 className="services-grid__title">{c.title}</h2>
-                <p className="services-grid__text">{c.text}</p>
-                <p className="services-grid__list">
-                  <em>{c.label}</em> {c.list}
-                </p>
-              </article>
-            ),
-          )}
+          {cards.map((c) => (
+            <article className="services-grid__card" key={c.title}>
+              <span className="services-grid__icon">{icon}</span>
+              <h2 className="services-grid__title">{c.title}</h2>
+              <p className="services-grid__text">{c.text}</p>
+              <p className="services-grid__list">
+                <em>{c.label}</em> {c.list}
+              </p>
+              <img className="services-grid__img" src={c.image} alt="" />
+            </article>
+          ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
