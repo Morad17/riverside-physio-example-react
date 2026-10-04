@@ -18,8 +18,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../img/physio-image-6.png") center / cover no-repeat;
+    background: url("../img/physio-image-6.webp") center / cover no-repeat;
     opacity: 0.85;
+    animation: services-bg-in 0.8s ease-out both;
     -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
   }
@@ -34,6 +35,16 @@
       transparent 35%,
       rgba($color-dark-green, 0.85) 100%
     );
+  }
+}
+
+// fade the photo in so it doesn't pop when it finishes decoding
+@keyframes services-bg-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.85;
   }
 }
 

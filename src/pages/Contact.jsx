@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Reveal from "../components/Reveal";
 import contactImg from "../assets/img/physio-image-contact.jpg";
 
 const svgProps = {
@@ -89,11 +90,15 @@ function Contact() {
   return (
     <section className="contact">
       <div className="contact__inner">
-        <div className="contact__left">
+        <Reveal className="contact__left">
           <img className="contact__image" src={contactImg} alt="" />
           <div className="contact__info">
-            {details.map((d) => (
-              <div className="contact__row" key={d.label}>
+            {details.map((d, i) => (
+              <Reveal
+                className="contact__row"
+                delay={i * 0.08}
+                key={d.label}
+              >
                 <span className="contact__icon">{d.icon}</span>
                 <div>
                   <strong className="contact__label">{d.label}</strong>
@@ -103,12 +108,17 @@ function Contact() {
                     </p>
                   ))}
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <form className="contact__form" onSubmit={handleSubmit}>
+        <Reveal
+          as="form"
+          delay={0.12}
+          className="contact__form"
+          onSubmit={handleSubmit}
+        >
           <span className="contact__eyebrow">Book your assessment</span>
           <h1 className="contact__title">Let’s start with a conversation.</h1>
 
@@ -163,7 +173,7 @@ function Contact() {
               Thanks — we'll be in touch the same working day.
             </p>
           )}
-        </form>
+        </Reveal>
       </div>
     </section>
   );

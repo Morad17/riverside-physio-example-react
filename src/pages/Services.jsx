@@ -1,16 +1,17 @@
 import { useState } from "react";
+import Reveal from "../components/Reveal";
 import physioImg4 from "../assets/img/physio-image-4.png";
 import physioImg5 from "../assets/img/physio-image-5.png";
 import physioImg7 from "../assets/img/physio-image-7.png";
 import physioImg8 from "../assets/img/physio-image-8.png";
 
-function ServiceCard({ card, icon }) {
+function ServiceCard({ card, icon, delay }) {
   const [open, setOpen] = useState(false);
   const [first, ...rest] = card.text.split(/(?<=[.!?])\s+/);
   const more = rest.join(" ");
 
   return (
-    <article className="services-grid__card">
+    <Reveal as="article" delay={delay} className="services-grid__card">
       <div className="services-grid__title-group">
         <span className="services-grid__icon">{icon}</span>
         <h2 className="services-grid__title">{card.title}</h2>
@@ -39,7 +40,7 @@ function ServiceCard({ card, icon }) {
         <span aria-hidden="true">{open ? "↑" : "↗"}</span>
       </button>
       <img className="services-grid__img" src={card.image} alt="" />
-    </article>
+    </Reveal>
   );
 }
 
@@ -101,13 +102,15 @@ function Services() {
   return (
     <div className="services-page">
       <section className="services-hero">
-        <h1>Care built around your body, your goals and your pace.</h1>
+        <Reveal as="h1">
+          Care built around your body, your goals and your pace.
+        </Reveal>
       </section>
 
       <section className="services-grid">
         <div className="services-grid__inner">
-          {cards.map((c) => (
-            <ServiceCard key={c.title} card={c} icon={icon} />
+          {cards.map((c, i) => (
+            <ServiceCard key={c.title} card={c} icon={icon} delay={(i % 2) * 0.12} />
           ))}
         </div>
       </section>

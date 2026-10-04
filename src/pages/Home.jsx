@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal from "../components/Reveal";
 import ServiceGrid from "../components/ServiceGrid";
 import TestimonialSlider from "../components/TestimonialSlider";
 import calendar from "../assets/img/calendar-icon.svg";
@@ -106,19 +107,23 @@ function Home() {
       <section className="intro">
         <div className="intro__inner">
           <div className="intro__info">
-            <h2 className="intro__title">How we help our clients</h2>
+            <Reveal as="h2" level="strong" className="intro__title">
+              How we help our clients
+            </Reveal>
           </div>
           <div className="intro__services">
-            <ServiceGrid />
+            <Reveal level="strong" delay={0.15}>
+              <ServiceGrid />
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="appointment">
-        <div className="appointment__image-container">
+        <Reveal level="strong" className="appointment__image-container">
           <img src={physioImg1} alt="" />
-        </div>
-        <div className="appointment__shape">
+        </Reveal>
+        <Reveal level="strong" delay={0.2} className="appointment__shape">
           <h2 className="appointment__title">Physios who actually listen</h2>
           <p className="appointment__text">
             Riverside was founded by Emma Hart and James Okafor, two chartered
@@ -126,16 +131,22 @@ function Home() {
             Here you get proper time, a real explanation, and a plan that fits
             your life — not a conveyor belt.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <section className="testimonials">
-        <h2 className="testimonials__title">What our patients say</h2>
-        <TestimonialSlider />
+        <Reveal as="h2" level="strong" className="testimonials__title">
+          What our patients say
+        </Reveal>
+        <Reveal level="strong" delay={0.15}>
+          <TestimonialSlider />
+        </Reveal>
       </section>
 
       <section className="process">
-        <h2 className="process__title">Your first appointment</h2>
+        <Reveal as="h2" level="strong" className="process__title">
+          Your first appointment
+        </Reveal>
         <div className="process__cards">
           {[
             {
@@ -154,7 +165,9 @@ function Home() {
               text: "Your first appointment takes around 45 minutes, giving us time to understand the problem properly and start helping straight away.",
             },
           ].map((step, i) => (
-            <div
+            <Reveal
+              level="strong"
+              delay={i * 0.15}
               className={`process__col${i === 1 ? " process__col--featured" : ""}`}
               key={step.num}
             >
@@ -170,7 +183,7 @@ function Home() {
                   Book now
                 </Link>
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>

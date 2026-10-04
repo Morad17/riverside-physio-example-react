@@ -1,3 +1,4 @@
+import Reveal from "../components/Reveal";
 import founder1 from "../assets/img/physio-founder-1.png";
 import founder2 from "../assets/img/physio-founder-2.png";
 import founder3 from "../assets/img/physio-founder-3.png";
@@ -125,31 +126,37 @@ function About() {
   return (
     <>
       <section className="about-us">
-        <h3 className="about-us__eyebrow">About Riverside</h3>
-        <h1 className="about-us__title">
+        <Reveal as="h3" className="about-us__eyebrow">
+          About Riverside
+        </Reveal>
+        <Reveal as="h1" delay={0.08} className="about-us__title">
           Experienced care, without the clinical coldness.
-        </h1>
-        <p className="about-us__text">
+        </Reveal>
+        <Reveal as="p" delay={0.16} className="about-us__text">
           Riverside was built on a simple idea: better physiotherapy happens
           when you're not rushed out the door.
-        </p>
+        </Reveal>
 
         <div className="about-us__cards">
           {story.map((s, i) => (
-            <article
+            <Reveal
+              as="article"
+              delay={i * 0.1}
               className={`about-us__card${i === 1 ? " is-featured" : ""}`}
               key={s.title}
             >
               <span className="about-us__icon">{s.icon}</span>
               <h2 className="about-us__card-title">{s.title}</h2>
               <p>{s.text}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
 
         <div className="values">
-          <h3 className="about-us__eyebrow">Our values</h3>
-          <div className="values__steps">
+          <Reveal as="h3" className="about-us__eyebrow">
+            Our values
+          </Reveal>
+          <Reveal className="values__steps">
             {values.map((v, i) => (
               <article
                 className={`values__card${i === 0 ? " is-default" : ""}`}
@@ -161,15 +168,22 @@ function About() {
               </article>
             ))}
             <img className="values__img" src={physioImg9} alt="" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="team">
-        <h2 className="team__title">Meet the team</h2>
+        <Reveal as="h2" className="team__title">
+          Meet the team
+        </Reveal>
         <div className="team__grid">
-          {team.map((p) => (
-            <article className="team__card" key={p.name}>
+          {team.map((p, i) => (
+            <Reveal
+              as="article"
+              delay={i * 0.1}
+              className="team__card"
+              key={p.name}
+            >
               <img className="team__img" src={p.image} alt={p.name} />
               <h3 className="team__name">
                 {p.name} — {p.role}
@@ -182,7 +196,7 @@ function About() {
                   <span>{p.specialty}</span>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>

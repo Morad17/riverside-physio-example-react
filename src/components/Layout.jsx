@@ -1,5 +1,10 @@
 import { useLocation, useOutlet } from 'react-router-dom'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import {
+  AnimatePresence,
+  MotionConfig,
+  motion,
+  useReducedMotion,
+} from 'motion/react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
@@ -13,6 +18,7 @@ function Layout() {
   const slide = reduceMotion ? 0 : 60
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="app">
       <Navbar />
       <AnimatePresence
@@ -33,6 +39,7 @@ function Layout() {
       </AnimatePresence>
       <Footer />
     </div>
+    </MotionConfig>
   )
 }
 
