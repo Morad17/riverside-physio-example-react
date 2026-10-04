@@ -41,6 +41,16 @@ $point: 56px;
   @media (max-width: $breakpoint-tablet) {
     $point-sm: 28px;
 
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing * 2;
+
+    &__image-container img {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+    }
+
     &__shape {
       padding: $spacing * 2.5 $spacing $spacing * 2.5 calc(#{$point-sm} + #{$spacing});
       clip-path: polygon(0 50%, $point-sm 0, 100% 0, 100% 100%, $point-sm 100%);

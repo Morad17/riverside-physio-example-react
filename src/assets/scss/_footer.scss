@@ -1,8 +1,83 @@
 @use 'variables' as *;
 
 .footer {
-  background: $color-bg-alt;
-  padding: $spacing * 1.5 $spacing;
-  text-align: center;
-  font-size: 0.9rem;
+  background: $color-dark-green;
+  color: rgba(#fff, 0.8);
+  padding: $spacing * 3 $spacing * 1.5 $spacing * 1.5;
+  font-size: 0.95rem;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: $spacing * 2;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__brand p {
+    margin: $spacing 0 0;
+    max-width: 30ch;
+  }
+
+  &__heading {
+    margin: 0 0 $spacing;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__copy {
+    max-width: $max-width;
+    margin: $spacing * 2 auto 0;
+    padding-top: $spacing;
+    border-top: 1px solid rgba(#fff, 0.15);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__inner {
+      grid-template-columns: 1fr;
+    }
+  }
 }

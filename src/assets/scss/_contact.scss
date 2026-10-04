@@ -1,9 +1,15 @@
 @use "variables" as *;
 
+// full-bleed page tucks under the floating navbar so no white strip shows
+.content:has(.contact) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .contact {
   width: 100vw;
-  margin-left: calc(50% - 50vw);
-  padding: $spacing * 3 $spacing * 2;
+  margin: -6rem 0 0 calc(50% - 50vw);
+  padding: calc(#{$spacing * 3} + 6rem) $spacing * 2 $spacing * 3;
   background: $color-cream;
 
   &__inner {

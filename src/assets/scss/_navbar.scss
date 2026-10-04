@@ -8,8 +8,8 @@
   max-width: $max-width;
   margin: $spacing auto 0;
   background: $navbar-bg;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid rgba(#fff, 0.12);
   border-radius: 999px;
   box-shadow: 0 8px 30px rgba(#000, 0.25);
