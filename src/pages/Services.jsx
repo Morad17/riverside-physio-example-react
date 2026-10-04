@@ -1,6 +1,8 @@
 import { useState } from "react";
 import physioImg4 from "../assets/img/physio-image-4.png";
 import physioImg5 from "../assets/img/physio-image-5.png";
+import physioImg7 from "../assets/img/physio-image-7.png";
+import physioImg8 from "../assets/img/physio-image-8.png";
 
 function ServiceCard({ card, icon }) {
   const [open, setOpen] = useState(false);
@@ -12,6 +14,7 @@ function ServiceCard({ card, icon }) {
       <div className="services-grid__title-group">
         <span className="services-grid__icon">{icon}</span>
         <h2 className="services-grid__title">{card.title}</h2>
+        <div className="services-grid__buffer-right"></div>
       </div>
 
       <p className="services-grid__text">{first}</p>
@@ -81,14 +84,14 @@ function Services() {
     },
     {
       title: "Post-surgery rehabilitation",
-      image: physioImg4,
+      image: physioImg7,
       text: "Recovering from surgery can feel daunting, especially when you're not sure what's safe to do. We work alongside your surgeon's guidance to rebuild strength, movement, and confidence at the right pace — never rushing, never holding you back unnecessarily. Most people are surprised how much structured rehab speeds things up.",
       label: "We support recovery after:",
       list: "knee and hip replacements, ACL reconstruction, shoulder surgery, fractures.",
     },
     {
       title: "Persistent pain",
-      image: physioImg5,
+      image: physioImg8,
       text: "Long-standing pain is different, and it needs a different approach. We take the time to understand how pain affects your daily life, then build a paced, realistic plan to help you do more of what matters with less flare-up. This isn't about \"pushing through\" — it's about getting control back.",
       label: "We help with:",
       list: "persistent back pain, arthritis-related pain, fibromyalgia, recurring injuries.",

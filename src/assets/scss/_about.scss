@@ -1,0 +1,178 @@
+@use "variables" as *;
+
+.about-us {
+  padding: $spacing * 4 0 $spacing * 3;
+  text-align: center;
+
+  &__eyebrow {
+    margin: 0 0 $spacing;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-dark-green;
+    text-align: center;
+  }
+
+  &__title {
+    max-width: 760px;
+    margin: 0 auto $spacing * 1.5;
+    font-family: $font-heading;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: $color-dark-green;
+  }
+
+  &__text {
+    max-width: 520px;
+    margin: 0 auto $spacing * 3;
+    line-height: 1.6;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing * 1.5;
+    max-width: $max-width;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing * 1.5;
+    border-radius: 6px;
+    background: $color-section;
+    color: $color-text;
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    &.is-featured {
+      background: $color-dark-green;
+      color: #fff;
+
+      .about-us__card-title {
+        color: #fff;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: $spacing * 2.5;
+    border-radius: 8px;
+    background: #fff;
+    color: $color-dark-green;
+  }
+
+  &__card-title {
+    margin: 0 0 $spacing * 0.5;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: $color-dark-green;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.values {
+  max-width: $max-width;
+  margin: $spacing * 5 auto 0;
+  text-align: left;
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing * 1.5;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: $spacing * 1.5;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid #d9dde0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    color: $color-text;
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    grid-column: 1;
+    transition:
+      background-color 0.6s ease,
+      transform 0.4s ease,
+      box-shadow 0.4s ease;
+
+    // highlighted by default; hand the highlight to whichever card is hovered
+    &.is-default,
+    &:hover {
+      background: #e4e7ea;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &__steps:has(.values__card:hover) .values__card.is-default:not(:hover) {
+    background: #fff;
+  }
+
+  // image fills the right column beside the three stacked cards
+  &__img {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  &__icon {
+    display: flex;
+    margin-bottom: $spacing * 1.5;
+    color: $color-accent-dark;
+  }
+
+  &__title {
+    margin: 0 0 $spacing * 0.5;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: $color-dark-green;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__steps {
+      grid-template-columns: 1fr;
+    }
+
+    &__img {
+      grid-column: 1;
+      grid-row: auto;
+      height: 280px;
+    }
+  }
+}
